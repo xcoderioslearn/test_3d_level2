@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3q1vhdth0gl3"]
+
+[ext_resource type="Script" uid="uid://cufrpbnkg68wv" path="res://scripts/character.gd" id="1_pjt0s"]
+[ext_resource type="PackedScene" uid="uid://b5l5wrp3wk8dn" path="res://assets/humanfigure.glb" id="2_wa5vi"]
+[ext_resource type="Script" uid="uid://doi0lfujkifel" path="res://scripts/spring_arm_pivot.gd" id="3_lrhn5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
+size = Vector3(0.933433, 1.67479, 0.456513)
+
+[node name="Character" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_pjt0s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.836298, 0)
+shape = SubResource("BoxShape3D_ig7tw")
+
+[node name="humanfigure" parent="." instance=ExtResource("2_wa5vi")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="SpringArmPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49, 0)
+script = ExtResource("3_lrhn5")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
+spring_length = 2.0
+
+[node name="SpringPosition" type="Node3D" parent="SpringArmPivot/SpringArm3D"]
+
+[node name="Camera3D" type="Camera3D" parent="SpringArmPivot/SpringArm3D/SpringPosition"]
+unique_name_in_owner = true

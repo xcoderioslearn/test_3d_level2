@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkkmjrsw8nhju"]
+
+[ext_resource type="PackedScene" uid="uid://duhk111d253pa" path="res://assets/floor.glb" id="1_x4a0q"]
+
+[node name="floor" instance=ExtResource("1_x4a0q")]
+
+[node name="CollisionShape3D" parent="Plane/Collisionduplicate" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00323057, -0.00256097, -0.000170231)

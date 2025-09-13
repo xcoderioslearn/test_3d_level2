@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvyibhgendbq4"]
+
+[ext_resource type="PackedScene" uid="uid://bkkmjrsw8nhju" path="res://inhereted scenes/floor.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://d3q1vhdth0gl3" path="res://scenes/character.tscn" id="2_0xm2m"]
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Character" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.785, 0.101, 13.422)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Top" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 72.3, 0)
+shadow_enabled = true
+
+[node name="Bottom" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -72.3, 0)
+visible = false
+
+[node name="NegativeZ" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, -72.3)
+
+[node name="Z" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 72.3)
+
+[node name="NegativeX" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -72.3, 0, 0)
+
+[node name="X" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 72.3, 0, 0)
