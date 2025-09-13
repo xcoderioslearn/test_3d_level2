@@ -8,8 +8,7 @@
 size = Vector3(0.933433, 1.67479, 0.456513)
 
 [node name="Character" type="CharacterBody3D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
 script = ExtResource("1_pjt0s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
