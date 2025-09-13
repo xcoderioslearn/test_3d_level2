@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3q1vhdth0gl3"]
+[gd_scene load_steps=6 format=3 uid="uid://d3q1vhdth0gl3"]
 
 [ext_resource type="Script" uid="uid://cufrpbnkg68wv" path="res://scripts/character.gd" id="1_pjt0s"]
 [ext_resource type="PackedScene" uid="uid://b5l5wrp3wk8dn" path="res://assets/humanfigure.glb" id="2_wa5vi"]
@@ -6,6 +6,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
 size = Vector3(0.933433, 1.67479, 0.456513)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrhn5"]
+margin = 0.1
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Character" type="CharacterBody3D"]
 collision_layer = 2
@@ -23,7 +27,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49, 0)
 script = ExtResource("3_lrhn5")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
-spring_length = 2.0
+shape = SubResource("BoxShape3D_lrhn5")
+spring_length = 4.0
+margin = 0.1
 
 [node name="SpringPosition" type="Node3D" parent="SpringArmPivot/SpringArm3D"]
 
