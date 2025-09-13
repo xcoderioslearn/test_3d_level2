@@ -2,36 +2,28 @@
 
 [ext_resource type="Script" uid="uid://cufrpbnkg68wv" path="res://scripts/character.gd" id="1_pjt0s"]
 [ext_resource type="PackedScene" uid="uid://b5l5wrp3wk8dn" path="res://assets/humanfigure.glb" id="2_wa5vi"]
-[ext_resource type="Script" uid="uid://doi0lfujkifel" path="res://scripts/spring_arm_pivot.gd" id="3_lrhn5"]
+[ext_resource type="PackedScene" uid="uid://rwb2mk1st7sw" path="res://addons/dragonforge_camera/cameras.tscn" id="3_my7n2"]
+[ext_resource type="PackedScene" uid="uid://bft4rl1dm1p3u" path="res://addons/dragonforge_camera/camera_mount_3d.tscn" id="4_dp8ca"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
 size = Vector3(0.933433, 1.67479, 0.456513)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lrhn5"]
-margin = 0.1
-size = Vector3(0.1, 0.1, 0.1)
-
-[node name="Character" type="CharacterBody3D"]
+[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("rig")]
 collision_layer = 2
 script = ExtResource("1_pjt0s")
+rig = NodePath("humanfigure")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.836298, 0)
 shape = SubResource("BoxShape3D_ig7tw")
 
 [node name="humanfigure" parent="." instance=ExtResource("2_wa5vi")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="SpringArmPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49, 0)
-script = ExtResource("3_lrhn5")
+[node name="Cameras" parent="." instance=ExtResource("3_my7n2")]
 
-[node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
-shape = SubResource("BoxShape3D_lrhn5")
-spring_length = 4.0
-margin = 0.1
+[node name="CameraMount3D" parent="Cameras" instance=ExtResource("4_dp8ca")]
 
-[node name="SpringPosition" type="Node3D" parent="SpringArmPivot/SpringArm3D"]
-
-[node name="Camera3D" type="Camera3D" parent="SpringArmPivot/SpringArm3D/SpringPosition"]
-unique_name_in_owner = true
+[node name="CameraMount3D2" parent="Cameras" instance=ExtResource("4_dp8ca")]
+upwards_rotation_limit = -15.0
+downwards_rotation_limit = 40.0
+first_person = true
